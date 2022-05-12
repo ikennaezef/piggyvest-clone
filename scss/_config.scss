@@ -1,16 +1,47 @@
 $bgcolors : (
-  color1: #f9f9f9,
-  color2: #f7f0ff,
-  color3: #0d60d8,
-  color4: #0c1825,
+  light: #f9f9f9,
+  grey: #f7f0ff,
+  blue: #0d60d8,
+  blue-light: #e0efff,
+  purple-light: #f7f0ff,
+  dark: #0c1825,
 );
 
 $textcolors : (
-  color1: #727272,
-  color2: #7913e5,
-  color3: #0d60d8,
-  color4: #0000ee,
-  color5: #083e9e,
-  color6: #353535,
-  color7: #0c1825,
-)
+  light: #727272,
+  purple: #7913e5,
+  blue-light: #0d60d8,
+  blue-plain: #0000ee,
+  blue-dull: #083e9e,
+  dark: #353535,
+  very-dark: #0c1825,
+);
+
+@function bg($color){
+  @return map-get($bgcolors, $color)
+};
+
+@function text($color){
+  @return map-get($textcolors, $color)
+};
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  line-height: 1.5;
+  color: text(dark);
+  font-size: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
