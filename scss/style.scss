@@ -192,7 +192,7 @@ section#security {
     }
 
     .security__text {
-      h2 {
+      h3 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
       }
@@ -207,6 +207,84 @@ section#security {
 
       #learn-more-btn:hover {
         border-bottom: 5px solid bg(blue-light);
+      }
+    }
+  }
+}
+
+section#savings {
+  padding: 2rem 0;
+  margin-top: 5rem;
+
+  .container {
+    display: flex;
+    gap: 1rem;
+
+    .savings__ways {
+      flex: 0 0 35%;
+      padding-right: 2rem;
+
+      h3 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .savings__grid {
+      flex: 0 0 65%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem;
+
+      .grid-item {
+        display: inline-block;
+
+        &:hover .plan-btn {
+          margin-left: 1rem;
+        }
+
+        .savings__plan {
+          border-radius: 1rem;
+          background-color: bg(light);
+          padding: 1.4rem 1.8rem;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          &>img {
+            width: 45px;
+            margin-bottom: 1.8rem;
+          }
+
+          h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+          }
+
+          p {
+            margin-bottom: 1.5rem;
+          }
+
+          .plan-btn {
+            display: inline-flex;
+            align-items: center;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 1rem;
+
+            img {
+              width: 35px;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+
       }
     }
   }
