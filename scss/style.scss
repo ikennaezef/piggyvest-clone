@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: 0.3s ease;
+  transition: 0.5s ease;
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -47,8 +47,8 @@ nav#nav {
       .navbuttons {
         button {
           font-weight: 500;
-          font-size: 1.05rem;
-          transition: 0.5s;
+          padding: 0.9rem 1.3rem;
+          font-size: 1.03rem;
         }
 
         .light-btn:hover {
@@ -179,7 +179,7 @@ section#hero {
 }
 
 section#security {
-  padding: 2rem 0;
+  padding: 4rem 0;
 
   .container {
     display: flex;
@@ -193,7 +193,7 @@ section#security {
 
     .security__text {
       h3 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         margin-bottom: 1rem;
       }
 
@@ -225,7 +225,7 @@ section#savings {
       padding-right: 2rem;
 
       h3 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
         margin-bottom: 1rem;
       }
 
@@ -286,6 +286,126 @@ section#savings {
         }
 
       }
+    }
+  }
+}
+
+section#investments {
+  padding: 5rem 0 8rem;
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    .investments__image {
+      position: relative;
+      width: auto;
+      display: flex;
+      justify-content: center;
+
+      .circle, .dots {
+        position: absolute;
+      }
+
+      .phone {
+        width: 100%;
+        max-width: 250px;
+        height: 100%;
+        z-index: 10;
+      }
+
+      .circle {
+        left: 0;
+        top: 20%;
+      }
+
+      .dots {
+        top: 0;
+        right: 10%;
+      }
+    }
+
+    .investments__text {
+      width: 80%;
+
+      span {
+        display: inline-block;
+        background-color: bg(purple-light);
+        padding: 0.6rem 1.5rem;
+        border-radius: 2rem;
+        color: text(purple);
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      #learn-more-btn {
+        color: text(purple);
+      }
+
+      #learn-more-btn:hover {
+        border-bottom: 5px solid bg(purple-light);
+      }
+    }
+  }
+}
+
+section#saver {
+  .wrapper {
+    display: flex;
+
+    .saver-left {
+      flex: 0 0 60%;
+      background-color: bg(blue);
+      padding: 6rem 1rem;
+
+      .content {
+        max-width: 480px;
+        margin: 0 auto;
+
+         h2 {
+           color: #fff;
+           font-size:3rem;
+           margin-bottom: 1.2rem;
+         }
+
+         p {
+           color: #fff;
+           margin-bottom: 2.5rem;
+         }
+
+         #meet-btn {
+           color: #fff;
+           display: flex;
+           align-items: center;
+
+           &:hover {
+             margin-left: 0.5rem;
+           }
+
+           img {
+             width: 30px;
+             margin-right: 0.5rem;
+           }
+         }
+       }
+     }
+    
+
+    .saver-right {
+      flex: 0 0 40%;
+      background: url('../images/saver.png') no-repeat center center/cover;
     }
   }
 }
