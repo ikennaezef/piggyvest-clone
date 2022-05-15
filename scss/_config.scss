@@ -24,6 +24,32 @@ $textcolors : (
   @return map-get($textcolors, $color)
 };
 
+
+
+$mobile: 550px;
+$tablet: 769px;
+$notebook: 992px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin notebook {
+  @media (max-width: #{$notebook}) {
+    @content;
+  }
+}
+
+
+
 h1, h2, h3, h4, h5, h6 {
   color: text(very-dark);
 }
@@ -50,5 +76,5 @@ img {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }

@@ -23,7 +23,7 @@
       <a href="#" class="logo">
         <img src="images/logo.svg" alt="Piggyvest Logo">
       </a>
-      <div>
+      <div class="nav__main">
         <ul class="navlinks">
           <li><a href="#">Save</a></li>
           <li><a href="#">Invest</a></li>
@@ -36,6 +36,12 @@
           <button class="dark-btn btn">Create free account</button>
         </div>
       </div>
+
+      <button id="menu-btn">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
     </div>
   </nav>
 
@@ -95,9 +101,11 @@
     <section id="savings">
       <div class="container">
         <div class="savings__ways">
-          <h3>4 ways to build your savings</h3>
-          <p>Earn 5% - 15% when you save with any of these PiggyVest plans.</p>
-          <button class="btn dark-btn">Start Saving</button>
+          <div class="content">
+            <h3>4 ways to build your savings</h3>
+            <p>Earn 5% - 15% when you save with any of these PiggyVest plans.</p>
+            <button class="btn dark-btn">Start Saving</button>
+          </div>
         </div>
         <div class="savings__grid">
           <a href="#" class="grid-item">
@@ -304,7 +312,7 @@
           <a href="#" class="footer__logo">
             <img src="images/logo.svg" alt="PiggyVest Logo">
           </a>
-          <ul class="footer__links">
+          <ul class="footer__links footer__products">
             <li>Products</li>
             <li><a href="#">Piggybank</a></li>
             <li><a href="#">Invest</a></li>
@@ -312,13 +320,13 @@
             <li><a href="#">Target Savings</a></li>
             <li><a href="#">Flex Naira</a></li>
           </ul>
-          <ul class="footer__links">
+          <ul class="footer__links footer__company">
             <li>Company</li>
             <li><a href="#">About</a></li>
             <li><a href="#">FAQs</a></li>
             <li><a href="#">Blog</a></li>
           </ul>
-          <ul class="footer__links">
+          <ul class="footer__links footer__legal">
             <li>Legal</li>
             <li><a href="#">Terms</a></li>
             <li><a href="#">Privacy</a></li>

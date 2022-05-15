@@ -15,20 +15,33 @@ html, body {
   min-height: 100vh;
   font-size: 16.5px;
   color: text(dark);
+  position: relative;
 }
 
 nav#nav {
 
   padding: 1rem 0;
   background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  &.shadow {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  }
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2.5rem;
+    position: relative;
 
     .logo {
+      z-index: 1000;
+
       img {
         width: 200px;
       }
@@ -40,25 +53,113 @@ nav#nav {
       align-items: center;
       justify-content: space-between;
 
+      
       .navlinks {
         display: flex;
         gap: 2.5rem;
       }
-
+      
       .navbuttons {
         button {
           font-weight: 500;
           padding: 0.9rem 1.3rem;
           font-size: 1.03rem;
         }
-
+        
         .light-btn:hover {
           border: 1px solid text(blue-light);
           color: text(blue-light);
         }
-
+        
         .dark-btn {
           margin-left: 0.5rem;
+        }
+      }
+
+      @include notebook {
+        display: block;
+        position: absolute;
+        top: -100vh;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #fff;
+        z-index: 100;
+        padding: 10rem 2rem 2rem;
+        text-align: center;
+
+        &.active {
+          top: 0;
+        }
+
+        .navlinks {
+          display: block;
+          text-align: center;
+
+          li {
+            line-height: 3.7;
+          }
+        }
+
+        .navbuttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+
+          .dark-btn {
+            margin-left: 0;
+          }
+        }
+      }
+
+      @include mobile {
+        padding: 5rem 1rem;
+      }
+    }
+
+    #menu-btn {
+      z-index: 100;
+      cursor: pointer;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 1.5rem;
+      border: none;
+      outline: none;
+      padding: 0.2rem;
+      background: transparent;
+
+      .line {
+        display: inline-block;
+        width: 1.7rem;
+        height: 3px;
+        background-color: bg(dark);
+      }
+
+      @include notebook {
+        display: flex;
+
+        &.active, & .line {
+          transition: all 0.3s ease-in-out;
+        }
+
+        &.active {
+          transition-delay: 0.2s;
+          transform: rotate(45deg);
+
+          .line:first-child {
+            transform: translateY(10px);
+          }
+
+          .line:nth-child(2) {
+            width: 0;
+          }
+
+          .line:last-child {
+            transition-delay: 0.2s;
+            transform: translateY(-5px) rotate(-90deg);
+          }
         }
       }
     }
@@ -66,34 +167,64 @@ nav#nav {
 }
 
 section#hero {
-  padding: 5rem 0;
+  padding: 10rem 0 5rem;
 
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
+
+    @include notebook {
+      grid-template-columns: 1fr;
+      gap: 5rem;
+    }
 
     .hero__text {
+
       .text {
         margin-bottom: 1.5rem;
         text-align: left;
         max-width: 500px;
 
+        @include notebook {
+          text-align: center;
+          margin: 0 auto 1.5rem;
+        }
+
         h1 {
           font-size: 3.7rem;
           line-height: 1.4;
           margin-bottom: 1rem;
+
+          @include mobile {
+            font-size: 2.5rem;
+          }
         }
 
       }
 
       .buttons {
+
+        @include notebook {
+          text-align: center;
+        }
+
         .dark-btn {
           margin-bottom: 1.5rem;
+
         }
         .btn-group {
           display: flex;
+
+          @include notebook {
+            justify-content: center;
+          }
+
+          @include mobile {
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
 
           .btn {
             margin-right: 1rem;
@@ -112,6 +243,8 @@ section#hero {
           }
         }
       }
+
+      
     }
 
     .hero__image {
@@ -127,20 +260,28 @@ section#hero {
         width: auto;
         height: 100%;
 
+        @include mobile {
+          margin-left: 2rem;
+        }
+
         .rect, .girl, .cross, .circle, .card, .dots {
           position: absolute;
           display: block;
         }
   
         .rect {
-          height: 35rem;
+          height: 34rem;
+          width: 100%;
+          max-width: 400px;
           left: 5%;
           position: relative;
         }
   
         .girl {
+          height: 30rem;
           top: 5%;
           left: -8%;
+          object-fit: cover;
         }
   
         .cross {
@@ -155,7 +296,7 @@ section#hero {
 
         .circle {
           top: 30%;
-          right: 0;
+          right: 5%;
           z-index: 10;
         }
   
@@ -165,13 +306,22 @@ section#hero {
         }
   
         .card1 {
-          top: 30%;
+          top: 25%;
           left: -8rem;
+
+          @include mobile {
+            left: -5rem;
+          }
         }
   
         .card2 {
           bottom: 1rem;
           right: -10%;
+
+          @include mobile {
+            bottom: 3rem;
+            right: 0;
+          }
         }
       }
 
@@ -188,14 +338,23 @@ section#security {
     gap: 2rem;
     max-width: 850px;
 
+    @include notebook {
+      flex-direction: column;
+      text-align: center;
+    }
+
     .security__image {
-      width: 110px;
+      width: 100px;
     }
 
     .security__text {
       h3 {
         font-size: 2.2rem;
         margin-bottom: 1rem;
+
+        @include mobile {
+          font-size: 2rem;
+        }
       }
 
       p {
@@ -221,17 +380,34 @@ section#savings {
     display: flex;
     gap: 1rem;
 
+    @include notebook {
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
+
     .savings__ways {
       flex: 0 0 35%;
-      padding-right: 2rem;
 
-      h3 {
-        font-size: 2.4rem;
-        margin-bottom: 1rem;
-      }
+      .content {
+        max-width: 300px;
 
-      p {
-        margin-bottom: 1.5rem;
+        @include notebook {
+          text-align: center;
+        }
+
+        h3 {
+          font-size: 2.4rem;
+          margin-bottom: 1rem;
+
+          @include mobile {
+            font-size: 2rem;
+          }
+        }
+  
+        p {
+          margin-bottom: 2rem;
+        }
       }
     }
 
@@ -241,8 +417,24 @@ section#savings {
       grid-template-columns: 1fr 1fr;
       grid-gap: 2rem;
 
+      @include notebook {
+        padding: 0 1rem;
+        grid-gap: 3rem;
+      }
+
+      @include tablet {
+        grid-gap: 1rem;
+        padding: 0 0.5rem;
+      }
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+      }
+
       .grid-item {
         display: inline-block;
+        max-width: 350px;
 
         &:hover .plan-btn {
           margin-left: 1rem;
@@ -256,6 +448,11 @@ section#savings {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+
+          @include notebook {
+            align-items: center;
+            text-align: center;
+          }
 
           &>img {
             width: 45px;
@@ -301,11 +498,25 @@ section#investments {
     align-items: center;
     justify-content: center;
 
+    @include notebook {
+      grid-template-columns: 1fr;
+      grid-gap: 5rem;
+      justify-items: center;
+    }
+
     .investments__image {
       position: relative;
       width: auto;
       display: flex;
       justify-content: center;
+
+      @include notebook {
+        width: 70%;
+      }
+
+      @include mobile {
+        width: 100%;
+      }
 
       .circle, .dots {
         position: absolute;
@@ -330,7 +541,11 @@ section#investments {
     }
 
     .investments__text {
-      width: 80%;
+      max-width: 600px;
+
+      @include notebook {
+        text-align: center;
+      }
 
       span {
         display: inline-block;
@@ -338,13 +553,17 @@ section#investments {
         padding: 0.6rem 1.5rem;
         border-radius: 2rem;
         color: text(purple);
-        font-weight: 500;
+        font-weight: 600;
         margin-bottom: 2rem;
       }
 
       h2 {
         font-size: 3rem;
         margin-bottom: 1.5rem;
+
+        @include mobile {
+          font-size: 2.2rem;
+        }
       }
 
       p {
@@ -366,6 +585,10 @@ section#saver {
   .wrapper {
     display: flex;
 
+    @include notebook {
+      flex-direction: column;
+    }
+
     .saver-left {
       flex: 0 0 60%;
       background-color: bg(blue);
@@ -375,20 +598,28 @@ section#saver {
         max-width: 480px;
         margin: 0 auto;
 
+        @include notebook {
+          text-align: center;
+        }
+
          h2 {
            color: #fff;
            font-size:3rem;
            margin-bottom: 1.2rem;
+
+           @include mobile {
+             font-size: 2rem;
+           }
          }
 
          p {
            color: #fff;
-           margin-bottom: 2.5rem;
+           margin-bottom: 2.8rem;
          }
 
          #meet-btn {
            color: #fff;
-           display: flex;
+           display: inline-flex;
            align-items: center;
 
            &:hover {
@@ -407,6 +638,11 @@ section#saver {
     .saver-right {
       flex: 0 0 40%;
       background: url('../images/saver.png') no-repeat center center/cover;
+      height: auto;
+
+      @include notebook {
+        min-height: 400px;
+      }
     }
   }
 }
@@ -420,11 +656,36 @@ section#customers {
     grid-gap: 2rem;
     align-items: center;
 
+    @include notebook {
+      grid-template-columns: 1fr;
+      grid-gap: 5rem;
+      grid-template: 
+        "customers_text"
+        "reviews";
+
+      .reviews {
+        grid-area: reviews;
+      }
+
+      .customers__text {
+        grid-area: customers_text;
+      }
+    }
+
     .reviews {
       height: 400px;
+      width: auto;
       overflow-y: hidden;
       padding: 0 1rem;
       position: relative;
+
+      @include notebook {
+        margin: 0 auto;
+      }
+
+      @include mobile {
+        padding: 0;
+      }
 
       &::before {        
         content: " ";
@@ -456,6 +717,11 @@ section#customers {
           background-color: bg(light);
           padding: 1.5rem;
           margin-bottom: 1rem;
+          max-width: 450px;
+
+          @include mobile {
+            padding: 0.8rem;
+          }
 
           .date {
             font-size: 0.78rem;
@@ -494,14 +760,27 @@ section#customers {
     }
 
     .customers__text {
+
+      @include notebook {
+        text-align: center;
+      }
+
       h3 {
         font-size: 2.2rem;
         margin-bottom: 1.5rem;
+
+        @include mobile {
+          font-size: 1.8rem;
+        }
       }
 
       p {
         margin-bottom: 1.5rem;
         max-width: 400px;
+
+        @include notebook {
+          margin: 0 auto 1.5rem;
+        }
       }
 
       .buttons {
@@ -510,6 +789,15 @@ section#customers {
         }
         .btn-group {
           display: flex;
+
+          @include notebook {
+            justify-content: center;
+          }
+
+          @include mobile {
+            flex-wrap: wrap;
+            gap: 1rem;
+          }
 
           .btn {
             margin-right: 1rem;
@@ -545,25 +833,42 @@ section#featured {
     justify-content: space-between;
     gap: 2rem;
 
+    @include notebook {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     h3 {
       font-size: 2.2rem;
+
+      @include mobile {
+        font-size: 2rem;
+      }
     }
 
     .featured__companies {
       display: flex;
       align-items: center;
-      // flex-wrap: wrap;
       gap: 2rem;
 
+      @include tablet {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
       a img {
-        width: 200px;
+        width: 180px;
+
+        @include mobile {
+          font-size: 150px;
+        }
       }
     }
   }
 }
 
 footer#footer {
-  padding: 5rem 0;
+  padding: 5rem 0 2rem;
 
   .footer__inner {
 
@@ -576,6 +881,31 @@ footer#footer {
       grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
       grid-gap: 2rem;
       margin-bottom: 2rem;
+
+      @include notebook {
+        grid-template-columns: 1fr 1fr;
+        grid-template: 
+          "logo ."
+          "products company"
+          "legal ."
+          "contact contact";
+
+        .footer__logo{
+          grid-area: logo;
+        }
+        .footer__products{
+          grid-area: products;
+        }
+        .footer__company{
+          grid-area: company;
+        }
+        .footer__legal{
+          grid-area: legal;
+        }
+        .footer__contact{
+          grid-area: contact;
+        }
+      }
 
       .footer__logo img {
         width: 200px;
@@ -600,11 +930,19 @@ footer#footer {
         text-align: right;
         width: 100%;
 
+        @include notebook {
+          text-align: left;
+        }
+
         .socials {
           display: flex;
           justify-content: flex-end;
           gap: 0.7rem;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
+
+          @include notebook {
+            justify-content: flex-start;
+          }
 
           a i {
             font-size: 1.5rem;
@@ -616,12 +954,12 @@ footer#footer {
         }
 
         .location {
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
         }
 
         .mail, .phone {
-          display: inline-block;
-          margin-bottom: 1rem;
+          display: block;
+          margin-bottom: 0.8rem;
         }
 
         .mail:hover, .phone:hover {
@@ -633,7 +971,7 @@ footer#footer {
     }
 
     .footer__about {
-      max-width: 800px;
+      max-width: 750px;
       margin: 0 auto;
       text-align: center;
 
