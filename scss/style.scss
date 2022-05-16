@@ -20,7 +20,7 @@ html, body {
 
 nav#nav {
 
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -44,6 +44,10 @@ nav#nav {
 
       img {
         width: 200px;
+
+        @include mobile {
+          width: 160px;
+        }
       }
     }
 
@@ -98,6 +102,10 @@ nav#nav {
 
           li {
             line-height: 3.7;
+
+            @include mobile {
+              line-height: 3;
+            }
           }
         }
 
@@ -113,7 +121,7 @@ nav#nav {
       }
 
       @include mobile {
-        padding: 5rem 1rem;
+        padding: 4rem 1rem;
       }
     }
 
@@ -466,7 +474,7 @@ section#savings {
           }
 
           p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
           }
 
           .plan-btn {
@@ -869,7 +877,7 @@ section#featured {
 }
 
 footer#footer {
-  padding: 5rem 0 2rem;
+  padding: 5rem 0 3rem;
 
   .footer__inner {
 
@@ -915,6 +923,10 @@ footer#footer {
       .footer__links {
         li {
           line-height: 2.5;
+
+          @include mobile {
+            line-height: 1.8;
+          }
 
           a:hover {
             color: text(blue-plain);
